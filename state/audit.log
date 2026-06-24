@@ -1,0 +1,7 @@
+2026-06-24T14:00:00Z BOOT handbook=v0.2 sections=11 adapter=claude-code
+2026-06-24T14:03:00Z DECISION led_0001 rule=4.2 gate=no
+2026-06-24T15:10:00Z DECISION led_0002 rule=4.2 gate=yes
+2026-06-24T15:10:01Z ENFORCE proxy=squid host=api.partner.example action=BLOCKED reason=not_on_allowlist
+2026-06-24T15:40:00Z DECISION led_0003 rule=4.2 gate=resolved
+2026-06-25T09:00:00Z BOOT handbook=v0.2 sections=11 adapter=openrouter model=gpt-5-2 reason=model_swap
+2026-06-25T09:00:00Z DECISION led_0004 rule=4.2 gate=no

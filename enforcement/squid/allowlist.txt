@@ -1,0 +1,5 @@
+# only these hosts are reachable from the walled agent network.
+# add a host here only via a Section 10 change with a ledger entry.
+api.openrouter.ai
+api.anthropic.com
+# local model path needs no external host; ollama runs in-network

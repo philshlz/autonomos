@@ -1,0 +1,10 @@
+# live deployment state (the SEED ledger/audit are committed intentionally as a showcase)
+state/memory/*
+!state/memory/.gitkeep
+!state/memory/README.md
+
+# runtime
+*.pyc
+__pycache__/
+.env
+.DS_Store

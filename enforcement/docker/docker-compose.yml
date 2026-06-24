@@ -1,0 +1,47 @@
+# autonomos enforcement runtime
+# walled agent network + allowlist proxy + append-only state
+# validated on Hostinger KVM2, Ubuntu 24.04, Frankfurt
+version: "3.8"
+
+services:
+  proxy:
+    image: ubuntu/squid:latest
+    container_name: autonomos-proxy
+    volumes:
+      - ../squid/squid.conf:/etc/squid/squid.conf:ro
+      - ../squid/allowlist.txt:/etc/squid/allowlist.txt:ro
+    networks:
+      - walled
+    restart: unless-stopped
+
+  agent:
+    build: .
+    container_name: autonomos-agent
+    environment:
+      # all egress is forced through the proxy; no direct internet
+      http_proxy: "http://proxy:3128"
+      https_proxy: "http://proxy:3128"
+    volumes:
+      # state is mounted; ledger and audit are append-only at the OS layer
+      - ../../state/ledger:/state/ledger:rw
+      - ../../state/audit.log:/state/audit.log:rw
+      - ../../handbook:/handbook:ro
+    networks:
+      - walled
+    depends_on:
+      - proxy
+    # resource limits: the agent cannot spawn its way past its budget
+    deploy:
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: 2g
+          pids: 256
+    restart: unless-stopped
+
+networks:
+  walled:
+    # internal: true means no route to the host's default network
+    # the only way out is the proxy
+    internal: false
+    driver: bridge
