@@ -19,7 +19,7 @@ the rationale ledger is an append-only sequence of JSON-lines entries. one decis
   "model": "claude-opus-4-8",
   "decision": "approve_compute_spend",
   "inputs": { "amount_eur": 40, "purpose": "risk reduction batch" },
-  "rule": "handbook/04-resources.md#4.2",
+  "rule": "handbook/HANDBOOK.md#4-resources",
   "rationale": "projected risk reduction exceeded threshold; below 50 EUR human-gate ceiling in effect at decision time",
   "gate": { "required": false, "reason": "below ceiling" },
   "prev": "led_0000",

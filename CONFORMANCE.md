@@ -2,7 +2,7 @@
 
 this repository is the **reference implementation** of the autonomos spec.
 
-- the spec is canonical: `handbook/` (the 11 sections) and `state/ledger/SCHEMA.md` (the ledger format).
+- the spec is canonical: `handbook/HANDBOOK.md` (the eleven sections, in one file) and `state/ledger/SCHEMA.md` (the ledger format).
 - everything else (`enforcement/`, `adapters/`, `verifier/`, `state/` tooling, `site/`) is one conformant implementation of that spec.
 - the model running an agent is rented and swappable. the spec is owned. the implementation declares which spec version it conforms to, exactly the way the ledger records which model made each decision.
 
